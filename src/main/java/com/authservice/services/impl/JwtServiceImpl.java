@@ -36,16 +36,28 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public Claims getClaims(String token) {
-        return null;
+        return Jwts.parserBuilder()
+                .setSigningKey(this.secretToken)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     @Override
     public boolean isExpired(String token) {
-        return false;
+        try {
+            return getClaims(token).getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
     public Integer extractUserId(String token) {
-        return 0;
+        try{
+            return Integer.parseInt(getClaims(token).getSubject());
+        } catch (Exception e){
+            return null;
+        }
     }
 }
