@@ -1,7 +1,5 @@
 jwt:
-    secret: Zy7w8tA!Qw3rTy6*Pl0KzX9cVbNm2Ee
-server:
-  port: 8080
+    secret: djhfjklaadfjalkdfhlKFALKJFJLAKFHDLKJfhlkjdfhalkjfhalkjdfhdalkjfhalskjfhadsjlkfahsljkfdh
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/authentication

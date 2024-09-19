@@ -6,7 +6,6 @@ import com.authservice.common.entities.UserModel;
 import com.authservice.repositories.UserRepository;
 import com.authservice.services.AuthService;
 import com.authservice.services.JwtService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +16,10 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
     private final JwtService jwtService;
-    private final PasswordEncoder passwordEncoder;
 
     public AuthServiceImpl(UserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.jwtService = jwtService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -37,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
     private UserModel mapToEntity(UserRequest userRequest) {
         return UserModel.builder()
                 .email(userRequest.getEmail())
-                .password(passwordEncoder.encode(userRequest.getPassword()))
+                .password(userRequest.getPassword())
                 .role("USER")
                 .build();
     }

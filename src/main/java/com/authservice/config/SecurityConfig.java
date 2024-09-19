@@ -35,7 +35,7 @@ public class SecurityConfig {
                                 "v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "v1/**")
+                                "v1/auth/register")
                         .permitAll()
                         .anyRequest().authenticated()
                 ).sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
