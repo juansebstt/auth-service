@@ -12,6 +12,7 @@ import java.util.Date;
 
 @Service
 public class JwtServiceImpl implements JwtService {
+    
     private final String secretToken;
 
     public JwtServiceImpl(@Value("${jwt.secret}") String secretToken) {
