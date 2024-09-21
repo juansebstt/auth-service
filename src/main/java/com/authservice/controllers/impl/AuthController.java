@@ -1,5 +1,6 @@
 package com.authservice.controllers.impl;
 
+import com.authservice.common.dtos.LoginRequest;
 import com.authservice.common.dtos.TokenResponse;
 import com.authservice.common.dtos.UserRequest;
 import com.authservice.controllers.AuthApi;
@@ -19,6 +20,11 @@ public class AuthController implements AuthApi {
     @Override
     public ResponseEntity<TokenResponse> createUser(UserRequest userRequest) {
         return ResponseEntity.ok(authService.createUser(userRequest));
+    }
+
+    @Override
+    public ResponseEntity<TokenResponse> loginUser(LoginRequest loginRequest) {
+        return ResponseEntity.ok(authService.loginUser(loginRequest));
     }
 
     @Override

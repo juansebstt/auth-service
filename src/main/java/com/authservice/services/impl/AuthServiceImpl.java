@@ -53,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
     private UserModel mapToEntity(UserRequest userRequest) {
         return UserModel.builder()
                 .email(userRequest.getEmail())
-                .password(userRequest.getPassword())
+                .password(passwordEncoder.encode(userRequest.getPassword()))
                 .role("USER")
                 .build();
     }
